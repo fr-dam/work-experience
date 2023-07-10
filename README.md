@@ -1,0 +1,116 @@
+# Login Application
+
+
+## Objective
+You are going to create a Python Flask application that will authenticate a user and give them access to a few simple web-pages.
+
+The objective here is to look at the authentication part of writing an application.
+
+
+## Prerequisites
+1. To make sure that you have the relevant software installed first of all install Python using [these instructions](https://realpython.com/installing-python/)
+2. Install the packages required to write your Flask app by following [these instructions](dependencies)
+3. Install git which you will use to make your changes, [instructions](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
+4. Checkout the repo `git@github.com:fr-dam/work-experience` to your local machine, [instructions](checking-out-a-repo)
+5. Make sure you a code editor installed on your laptop, here's a link to a [popular free editor](https://code.visualstudio.com/download)
+
+## Background
+Before you begin, here's a list of the files we've provided:
+
+```
+├── app
+│   ├── extensions.py
+│   ├── __init__.py
+│   ├── main
+│   │   ├── __init__.py
+│   │   └── routes.py
+│   ├── models
+│   │   └── user.py
+│   └── templates
+│       ├── base.html
+│       ├── index.html
+│       ├── login.html
+│       └── register.html
+└── config.py
+```
+
+`config.py`:
+    This loads the database `app.db` which is used to store user details (id, username and password). You shouldn't need to edit this file
+`extensions.py`:
+    This loads the SQLAlchemy library to help us talk to the sqlite database
+Files under `app/templates`:
+    These are what is shown in the browser and are a type of HTML template. They are able to inherit
+    content (in our example from `base.html`) which is mostly rendering the menu bar at the top of each 
+    page.
+`app/main/routes.py`:
+    is where the logic goes, you'll probably spend most of your time editing this file. It has 3 methods currently (login, register and success) which are mapped to the URL path specified by 
+    `@bp.route('/login', methods=['POST', 'GET'])` where `/login` is the path after the URL. The register method is where we've put most of the logic which allows new users to register. 
+
+
+### Preparation
+Once you have installed Flask and the other dependencies you will need to initialise the database. Most of this is handled for you by SQLAlchemy but you will need to run the following commands in a terminal
+
+```
+cd <directory you have checked out the repo to>/auth_app/
+flask shell
+```
+
+This will take you into an interactive Python (Flask) shell. From there run these commands:
+
+```
+from app.extensions import db 
+db.create_all()
+<Ctrl-D>
+```
+
+The last shortcut `Ctrl-D` will exit the Flask shell. You should now have a file called app.db which is where sqlite will store your users
+
+
+### Tasks
+We don't expect you to get to the end of this list of tasks (although it's fantastic if you do). We've tried to include enough content to keep you occupied for the whole day.
+
+1. Currently, the app only asks for a username when registering a user. Add another field to `app/templates/register.html` to include a password text field.
+2. Edit `app/main/routes.py` to store the password as well as the username on line 37.
+3. If the user is already found in the database make the app update their password if they use the 
+register URL. Currently is just prints a message to say they are already registered before going to the `success` endpoint.
+4. Customise the HTML templates under `app/templates` to make them more interesting. You could try a variety of things but it's really up to you. Anything which is valid HTML is great and you should be able to find a lot of tutorials online to help you. Here's an [example](https://www.w3schools.com/html/). Some things you could try:
+  * Change the colour of the text for the links in the menu
+  * Change the page background colour
+  * Add an image
+5. Write a small paragraph which explains the difference between the `POST` and `GET` HTTP methods and what other methods are availble as part of the HTTP standards and when you are likely to use each.
+6. Currently, the `success` route doesn't use a HTML template and just prints some raw text out to the browser. Get it to use a template instead, you'll have to add a file (`app/templates/success.html` and get the `success` method to render that instead)
+
+
+### Checking out a repo
+Most developers will have a dedicated directory where the check various repositories to keep them organised. Even if it's just a directory under your "My Documents" or home directory so create 
+a folder somewhere and change directory to it. If you're using a terminal, then cd to the directory you created before running the git checkout below.
+
+The following commnand allows you to checkout a repo:
+
+```
+git checkout git@github.com:fr-dam/work-experience
+cd work-experience
+```
+
+This will fetch the full contents of that repo including the flask starter app under `work-experience/auth-app`
+
+Once you have the files on your laptop, create a branch to do your work on. You shouldn't commit changes to the master branch.
+Replace `my-branch-name` with something that makes more sense.
+
+```
+git checkout -b my-branch-name
+```
+
+
+### Dependencies
+Dependencies are libraries of code that have been developed by other people which make it easier to write complex applications.
+
+You can import these into your python program and use the code they've written to reduce the amount of code you need to write.
+
+We are going to install the following packages using `pip` which is the main Python package installer/manager
+
+```
+pip install Flask pysqlite Flask-SQLAlchemy
+```
+
+The last 2 are for working with databases and we may not get that far!
