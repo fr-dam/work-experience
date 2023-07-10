@@ -82,7 +82,7 @@ register URL. Currently is just prints a message to say they are already registe
 6. Currently, the `success` route doesn't use a HTML template and just prints some raw text out to the browser. Get it to use a template instead, you'll have to add a file (`app/templates/success.html` and get the `success` method to render that instead)
 
 
-### Checking out a repo
+#### Checking out a repo
 Most developers will have a dedicated directory where the check various repositories to keep them organised. Even if it's just a directory under your "My Documents" or home directory so create 
 a folder somewhere and change directory to it. If you're using a terminal, then cd to the directory you created before running the git checkout below.
 
@@ -103,7 +103,7 @@ git checkout -b my-branch-name
 ```
 
 
-### Dependencies
+#### Dependencies
 Dependencies are libraries of code that have been developed by other people which make it easier to write complex applications.
 
 You can import these into your python program and use the code they've written to reduce the amount of code you need to write.
