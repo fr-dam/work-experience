@@ -9,9 +9,9 @@ The objective here is to look at the authentication part of writing an applicati
 
 ## Prerequisites
 1. To make sure that you have the relevant software installed first of all install Python using [these instructions](https://realpython.com/installing-python/)
-2. Install the packages required to write your Flask app by following [these instructions](dependencies)
+2. Install the packages required to write your Flask app by following [these instructions](#dependencies)
 3. Install git which you will use to make your changes, [instructions](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
-4. Checkout the repo `git@github.com:fr-dam/work-experience` to your local machine, [instructions](checking-out-a-repo)
+4. Checkout the repo `git@github.com:fr-dam/work-experience` to your local machine, [instructions](#checking-out-a-repo)
 5. Make sure you a code editor installed on your laptop, here's a link to a [popular free editor](https://code.visualstudio.com/download)
 
 ## Background
@@ -37,7 +37,7 @@ Before you begin, here's a list of the files we've provided:
 `config.py`:
     This loads the database `app.db` which is used to store user details (id, username and password). You shouldn't need to edit this file
 `extensions.py`:
-    This loads the SQLAlchemy library to help us talk to the sqlite database
+    This loads the SQLAlchemy library to help us talk to the sqlite database. This is really just a framework that makes it easier to talk to a database.
 Files under `app/templates`:
     These are what is shown in the browser and are a type of HTML template. They are able to inherit
     content (in our example from `base.html`) which is mostly rendering the menu bar at the top of each 
