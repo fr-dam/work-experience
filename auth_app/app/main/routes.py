@@ -9,10 +9,13 @@ from app.extensions import db
 def index():
     return render_template('index.html')
 
+
 @bp.route('/success/<name>')
 def success(name):
     return 'Hello %s' % name
 
+# The login url should be presented on your laptop by the URL
+# http://localhost:5000/login
 @bp.route('/login', methods=['POST', 'GET'])
 def login():
     if request.method == 'POST':
@@ -21,6 +24,8 @@ def login():
     else:
         return render_template('login.html')
 
+# The register url should be presented on your laptop by the URL
+# http://localhost:5000/register
 @bp.route('/register', methods=(['POST', 'GET']))
 def register():
     if request.method == 'POST':
@@ -34,7 +39,7 @@ def register():
                 print("Found user " + user.username)
 
         if not found:
-            create_user = User(username=request.form['user'])
+            create_user = User(new_user)
             db.session.add(create_user)
             db.session.commit()
         else:

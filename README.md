@@ -46,6 +46,7 @@ Files under `app/templates`:
     is where the logic goes, you'll probably spend most of your time editing this file. It has 3 methods currently (login, register and success) which are mapped to the URL path specified by 
     `@bp.route('/login', methods=['POST', 'GET'])` where `/login` is the path after the URL. The register method is where we've put most of the logic which allows new users to register. 
 
+Most of the structure and basic configuration were taken from [here](https://www.digitalocean.com/community/tutorials/how-to-structure-a-large-flask-application-with-flask-blueprints-and-flask-sqlalchemy) if you want to see a more in depth set of instructions
 
 ### Preparation
 Once you have installed Flask and the other dependencies you will need to initialise the database. Most of this is handled for you by SQLAlchemy but you will need to run the following commands in a terminal
