@@ -19,18 +19,18 @@ Before you begin, here's a list of the files we've provided:
 
 ```
 ├── app
-│   ├── extensions.py
-│   ├── __init__.py
-│   ├── main
-│   │   ├── __init__.py
-│   │   └── routes.py
-│   ├── models
-│   │   └── user.py
-│   └── templates
-│       ├── base.html
-│       ├── index.html
-│       ├── login.html
-│       └── register.html
+│   ├── extensions.py
+│   ├── __init__.py
+│   ├── main
+│   │   ├── __init__.py
+│   │   └── routes.py
+│   ├── models
+│   │   └── user.py
+│   └── templates
+│             ├── base.html
+│             ├── index.html
+│             ├── login.html
+│             └── register.html
 └── config.py
 ```
 
@@ -64,22 +64,39 @@ db.create_all()
 <Ctrl-D>
 ```
 
+This should create a `user` table with the structure defined in `app/models/user.py`. To confirm this and get you started run the following:
 The last shortcut `Ctrl-D` will exit the Flask shell. You should now have a file called app.db which is where sqlite will store your users
 
+```
+cd <path to repo>/auth_app
+sqlite3 app.db
+# You don't need to type `sqlite>` at the begining of the following lines, it's the prompt sqlite displays
+sqlite> .schema user
+sqlite> INSERT INTO user (username, password) VALUES ('bob','Password1');
+sqlite> select * from user;
+1|bob|Password1
+```
+
+Here's a [useful tutorial](https://www.tutorialspoint.com/sqlite/sqlite_insert_query.htm) on sqlite
 
 ### Tasks
 We don't expect you to get to the end of this list of tasks (although it's fantastic if you do). We've tried to include enough content to keep you occupied for the whole day.
 
-1. Currently, the app only asks for a username when registering a user. Add another field to `app/templates/register.html` to include a password text field.
-2. Edit `app/main/routes.py` to store the password as well as the username on line 37.
-3. If the user is already found in the database make the app update their password if they use the 
+1. Change the login page (app/templates/login.html) and function (app/main/routes.py) to request a password as well as a username and check that the user/password are correct (it's ok to hard code the username/password to begin with). 
+2. Change the login function to read from the database (see the register function to get you started) and check that the username/password exists in the db.  
+3. If the user doesn't exist or the password is wrong show an appropriate error message in the browser.
+4. Currently, the app only asks for a username when registering a user. Add another field to `app/templates/register.html` to include a password text field.
+5. Edit `app/main/routes.py` to store the password as well as the username on line 37.
+6. If the user is already found in the database make the app update their password if they use the 
 register URL. Currently is just prints a message to say they are already registered before going to the `success` endpoint.
-4. Customise the HTML templates under `app/templates` to make them more interesting. You could try a variety of things but it's really up to you. Anything which is valid HTML is great and you should be able to find a lot of tutorials online to help you. Here's an [example](https://www.w3schools.com/html/). Some things you could try:
-  * Change the colour of the text for the links in the menu
-  * Change the page background colour
-  * Add an image
-5. Write a small paragraph which explains the difference between the `POST` and `GET` HTTP methods and what other methods are availble as part of the HTTP standards and when you are likely to use each.
-6. Currently, the `success` route doesn't use a HTML template and just prints some raw text out to the browser. Get it to use a template instead, you'll have to add a file (`app/templates/success.html` and get the `success` method to render that instead)
+7. Customise the HTML templates under `app/templates` to make them more interesting. You could try a variety of things but it's really up to you. Anything which is valid HTML is great and you should be able to find a lot of tutorials online to help you. Here's an [example](https://www.w3schools.com/html/). Some things you could try:
+   * Change the colour of the text for the links in the menu
+   * Change the page background colour
+   * Add an image
+   * Use CSS to format the templates
+8. Write a small paragraph which explains the difference between the `POST` and `GET` HTTP methods and what other methods are available as part of the HTTP protocol and when you are likely to use each.
+9. Currently, the `success` route doesn't use a HTML template and just prints some raw text out to the browser. Get it to use a template instead, you'll have to add a file (`app/templates/success.html` and get the `success` method to render that instead)
+10. In the real world it's a **VERY BAD IDEA** to store passords unencrypted in a database, do some research to say what you could do about this and write a paragraph about it.
 
 
 #### Checking out a repo
