@@ -73,7 +73,7 @@ sqlite3 app.db
 # You don't need to type `sqlite>` at the begining of the following lines, it's the prompt sqlite displays
 sqlite> .schema user
 sqlite> INSERT INTO user (username, password) VALUES ('bob','Password1');
-sqlite> select * from user;
+sqlite> SELECT * FROM user;
 1|bob|Password1
 ```
 
