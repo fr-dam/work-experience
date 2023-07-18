@@ -119,6 +119,16 @@ Replace `my-branch-name` with something that makes more sense.
 git checkout -b my-branch-name
 ```
 
+Once you complete a task you can push your changes by running the following git commands:
+
+```
+git add -A
+git commit -m "Describe what I changed"
+git push origin my-branch-name
+```
+
+Once you do this your changes will be viewable in the github web user interface.
+
 
 #### Dependencies
 Dependencies are libraries of code that have been developed by other people which make it easier to write complex applications.
