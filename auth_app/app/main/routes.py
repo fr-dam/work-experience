@@ -28,7 +28,6 @@ def login():
             return redirect(url_for('main.success', name=user))
         else:
             print("Incorrect username or password")
-
     else:
         return render_template('login.html')
 
@@ -44,7 +43,9 @@ def register():
             print(user.username)
             if user.username == new_user:
                 found = True
+                
                 print("Found user " + user.username)
+                return render_template('update.html',user=new_user)
 
         if not found:
             create_user = User(new_user)
@@ -55,4 +56,11 @@ def register():
         return redirect(url_for('main.success', name=user.username))
     else:
         return render_template('register.html')
+
+@bp.route('/update', methods=(['POST', 'GET']))    
+def NewPassword():
+    if request.method == 'POST':
+        new_password = request.form['NewPassword']
+        old_password = request.form['OldPassword'] 
+    
 
