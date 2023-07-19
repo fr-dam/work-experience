@@ -5,9 +5,6 @@ from app.models.user import User
 
 from app.extensions import db
 
-user = "Bob"
-password = "Bob123"
-
 @bp.route('/')
 def index():
     return render_template('index.html')
@@ -24,10 +21,12 @@ def login():
     if request.method == 'POST':
         user = request.form['user']
         password = request.form['password']
-        if user == "Bob" and password == "Bob123":
+        count = User.query.filter_by(username=user, password=password).count()
+        user
+        if count == 1:
             return redirect(url_for('main.success', name=user))
         else:
-            print("Incorrect username or password")
+            return render_template('register.html')
     else:
         return render_template('login.html')
 
@@ -48,7 +47,8 @@ def register():
                 return render_template('update.html',user=new_user)
 
         if not found:
-            create_user = User(new_user)
+            password = request.form['password']
+            create_user = User(username=new_user, password = password)
             db.session.add(create_user)
             db.session.commit()
         else:
@@ -61,6 +61,12 @@ def register():
 def update():
     if request.method == 'POST':
         new_password = request.form['NewPassword']
-        old_password = request.form['OldPassword'] 
-    
-
+        old_password = request.form['OldPassword']
+        print("Please enter a new password")
+        username=request.form['user']
+        user = User.query.filter_by(username=username).first()
+        user.password=new_password
+        db.session.commit()
+        return redirect(url_for('main.success', name=user.username))
+    else:
+        return render_template('register.html')
