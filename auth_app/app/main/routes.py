@@ -58,7 +58,7 @@ def register():
         return render_template('register.html')
 
 @bp.route('/update', methods=(['POST', 'GET']))    
-def NewPassword():
+def update():
     if request.method == 'POST':
         new_password = request.form['NewPassword']
         old_password = request.form['OldPassword'] 
