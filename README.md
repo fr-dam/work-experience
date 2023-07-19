@@ -10,8 +10,9 @@ The objective here is to look at the authentication part of writing an applicati
 ## Prerequisites
 1. To make sure that you have the relevant software installed first of all install Python using [these instructions](https://realpython.com/installing-python/)
 2. Install the packages required to write your Flask app by following [these instructions](#dependencies)
+3. Install sqlite3 which you will need to view and update the SQL database, [instructions](https://www.tutorialspoint.com/sqlite/sqlite_installation.htm)
 3. Install git which you will use to make your changes, [instructions](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
-4. Checkout the repo `git@github.com:fr-dam/work-experience` to your local machine, [instructions](#checking-out-a-repo)
+4. Clone the repo `https://github.com/fr-dam/work-experience` to your local machine, [instructions](#checking-out-a-repo)
 5. Make sure you a code editor installed on your laptop, here's a link to a [popular free editor](https://code.visualstudio.com/download)
 
 ## Background
@@ -106,7 +107,7 @@ a folder somewhere and change directory to it. If you're using a terminal, then 
 The following commnand allows you to checkout a repo:
 
 ```
-git checkout git@github.com:fr-dam/work-experience
+git clone https://github.com/fr-dam/work-experience
 cd work-experience
 ```
 
@@ -138,7 +139,7 @@ You can import these into your python program and use the code they've written t
 We are going to install the following packages using `pip` which is the main Python package installer/manager
 
 ```
-pip install Flask pysqlite Flask-SQLAlchemy
+pip install Flask Flask-SQLAlchemy
 ```
 
 The last 2 are for working with databases and we may not get that far!
