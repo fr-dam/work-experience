@@ -4,13 +4,17 @@
     <meta charset="UTF-8">
     <title>{% block title %} {% endblock %} - FlaskApp</title>
     <style>
+
         h2 {
             width: 100%;
+            color:#0033ff;
+            margin: 2px;
         }
 
         .title {
             margin: 5px;
             width: 100%;
+            color:#00bfff;
         }
 
         .content {
@@ -47,6 +51,7 @@
     <nav>
         <a href="{{ url_for('main.login') }}">Login</a>
         <a href="{{ url_for('main.register') }}">Register</a>
+        <a href="{{ url_for('main.update') }}">Register</a>
     </nav>
     <hr>
     <div class="content">

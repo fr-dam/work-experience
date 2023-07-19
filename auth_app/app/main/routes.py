@@ -5,6 +5,9 @@ from app.models.user import User
 
 from app.extensions import db
 
+user = "Bob"
+password = "Bob123"
+
 @bp.route('/')
 def index():
     return render_template('index.html')
@@ -20,7 +23,12 @@ def success(name):
 def login():
     if request.method == 'POST':
         user = request.form['user']
-        return redirect(url_for('main.success', name=user))
+        password = request.form['password']
+        if user == "Bob" and password == "Bob123":
+            return redirect(url_for('main.success', name=user))
+        else:
+            print("Incorrect username or password")
+
     else:
         return render_template('login.html')
 

@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <span class="title"><h1>{% block content %} Please update password {% endblock}</h1></span>
+    <div class="content">
+        <h2>Password update form</h2>
+        <form action="http://localhost:5000/UpdatePassword" method="post">
+            <p>Old password: <input type="text" name="OldPassword"/></p>
+            <p>New Password: <input type="text" name="NewPassword"/></p>
+            <input type="hidden" name="user" value="{{user}}"/>
+            <p><input type="submit" value="submit"/></p>
+        </form>
+    </div>
+{% endblock %}
