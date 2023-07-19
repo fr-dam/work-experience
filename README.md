@@ -7,13 +7,22 @@ You are going to create a Python Flask application that will authenticate a user
 The objective here is to look at the authentication part of writing an application.
 
 
+> ### Important! 
+>These instructions weren't written for Windows. You may need to edit some of the directory paths to a `\` instead of `/`. You may
+> also need to add `.exe` to the end of the commands for sqlite3 (i.e. `sqlite3.exe`)
+
 ## Prerequisites
 1. To make sure that you have the relevant software installed first of all install Python using [these instructions](https://realpython.com/installing-python/)
 2. Install the packages required to write your Flask app by following [these instructions](#dependencies)
 3. Install sqlite3 which you will need to view and update the SQL database, [instructions](https://www.tutorialspoint.com/sqlite/sqlite_installation.htm)
-3. Install git which you will use to make your changes, [instructions](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
-4. Clone the repo `https://github.com/fr-dam/work-experience` to your local machine, [instructions](#checking-out-a-repo)
-5. Make sure you a code editor installed on your laptop, here's a link to a [popular free editor](https://code.visualstudio.com/download)
+4. Install git which you will use to make your changes, [instructions](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
+5. Clone the repo `https://github.com/fr-dam/work-experience` to your local machine, [instructions](#checking-out-a-repo)
+6. Make sure you a code editor installed on your laptop, here's a link to a [popular free editor](https://code.visualstudio.com/download)
+
+> ### Important! 
+> You will likely need to update your PATH environment variable to allow your system to find the executable files for your
+> sqlite installation and also the python libraries installed with pip. There are some instructions [here](https://www.computerhope.com/issues/ch000549.htm)
+> but ask for help if it's not something you're familiar with.
 
 ## Background
 Before you begin, here's a list of the files we've provided:
@@ -53,7 +62,7 @@ Most of the structure and basic configuration were taken from [here](https://www
 Once you have installed Flask and the other dependencies you will need to initialise the database. Most of this is handled for you by SQLAlchemy but you will need to run the following commands in a terminal
 
 ```
-cd <directory you have checked out the repo to>/auth_app/
+cd <path to repo>/auth_app/
 flask shell
 ```
 
@@ -80,6 +89,16 @@ sqlite> SELECT * FROM user;
 
 Here's a [useful tutorial](https://www.tutorialspoint.com/sqlite/sqlite_insert_query.htm) on sqlite
 
+Now we're going to test the existing application. Make sure you're in the `auth_app` directory. Run the following command:
+
+```
+flask run
+```
+This should startup up the application. Go to your browser and type `http://localhost:5000/login` into the address bar. This should take you
+to the login page for our app.
+
+Type your name into the text box and hit submit.
+
 ### Tasks
 We don't expect you to get to the end of this list of tasks (although it's fantastic if you do). We've tried to include enough content to keep you occupied for the whole day.
 
@@ -90,6 +109,8 @@ We don't expect you to get to the end of this list of tasks (although it's fanta
 5. Edit `app/main/routes.py` to store the password as well as the username on line 37.
 6. If the user is already found in the database make the app update their password if they use the 
 register URL. Currently is just prints a message to say they are already registered before going to the `success` endpoint.
+To do this you will have to create a new html page with a form which just asks for the password. You will probably need to store the username
+in a hidden form field otherwise you won't have the username
 7. Customise the HTML templates under `app/templates` to make them more interesting. You could try a variety of things but it's really up to you. Anything which is valid HTML is great and you should be able to find a lot of tutorials online to help you. Here's an [example](https://www.w3schools.com/html/). Some things you could try:
    * Change the colour of the text for the links in the menu
    * Change the page background colour
