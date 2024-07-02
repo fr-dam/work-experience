@@ -10,9 +10,9 @@ def index():
     return render_template('index.html')
 
 
-@bp.route('/success/<name>')
-def success(name):
-    return 'Hello %s' % name
+@bp.route('/success/<name>/<password>')
+def success(name, password):
+    return 'Hello %s, this is the password %s' % (name, password)
 
 # The login url should be presented on your laptop by the URL
 # http://localhost:5000/login
@@ -20,7 +20,7 @@ def success(name):
 def login():
     if request.method == 'POST':
         user = request.form['user']
-        return redirect(url_for('main.success', name=user))
+        return redirect(url_for('main.success', name=user, password="mygreatpassword"))
     else:
         return render_template('login.html')
 
@@ -44,7 +44,7 @@ def register():
             db.session.commit()
         else:
             print("User already registered")
-        return redirect(url_for('main.success', name=user.username))
+        return redirect(url_for('main.success', name=user.username, password=user.password))
     else:
         return render_template('register.html')
 
