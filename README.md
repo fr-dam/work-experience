@@ -173,6 +173,7 @@ which stores python binaries and modules locally within your project directory.
 cd <path to repo>
 python -m venv  <path to repo>
 cd auth_app
+../bin/pip install Flask Flask-SQLAlchemy
 ../bin/flask run 
 
 ```
