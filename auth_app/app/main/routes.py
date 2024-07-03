@@ -23,9 +23,12 @@ def login():
         password = request.form["password"]
         if password == "Password1":
             print("The correct password was used " + password)
+            isPasswordCorrect = True
         else:
-            print("it didnt work try " + password)
-            isPasswordCorrect = False    
+            print("it didnt work try Password1")
+            isPasswordCorrect = False   
+            return render_template('login.html')
+            
         return redirect(url_for('main.success', name=user))
     else:
         return render_template('login.html')
@@ -46,20 +49,11 @@ def register():
             if user.username == new_user:
                 found = True
                 print("Found user " + user.username)
-           #add here
         if not found:
             create_user = User(new_user)
             db.session.add(create_user)
             db.session.commit()
-        #elif found and isPasswordCorrect == True :
-            #print("User already registered with correct password")
+            print("User already registered")
         return redirect(url_for('main.success', name=user.username))
     else:
         return render_template('register.html')
-    
-    """ if user.password == "Password1":
-            isPasswordCorrect = True
-            print("The correct password was used " + user.password)
-        else:
-            print("it didnt work try " + user.password)
-            isPasswordCorrect = False"""
