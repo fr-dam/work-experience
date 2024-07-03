@@ -176,3 +176,5 @@ cd auth_app
 ../bin/flask run 
 
 ```
+
+You may have to change the above paths if you are running on Windows.
