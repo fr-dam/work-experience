@@ -164,3 +164,15 @@ pip install Flask Flask-SQLAlchemy
 ```
 
 The last 2 are for working with databases and we may not get that far!
+
+#### Running in a Python Virtual Environment
+If you want to run this without installing the python modules globally on your machine, you can run it in a virtual environment
+which stores python binaries and modules locally within your project directory.
+
+```
+cd <path to repo>
+python -m venv  <path to repo>
+cd auth_app
+../bin/flask run 
+
+```
