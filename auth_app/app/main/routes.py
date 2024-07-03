@@ -22,9 +22,9 @@ def login():
         user = request.form['user']
         password = request.form["password"]
         if password == "Password1":
-            print("The correct password was used " + user.password)
+            print("The correct password was used " + password)
         else:
-            print("it didnt work try " + user.password)
+            print("it didnt work try " + password)
             isPasswordCorrect = False    
         return redirect(url_for('main.success', name=user))
     else:
