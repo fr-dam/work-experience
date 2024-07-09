@@ -25,7 +25,7 @@ def login():
             print("The correct password was used " + password)
             isPasswordCorrect = True
         else:
-            print("it didnt work try Password1")
+            print("it didnt work try " + password)
             isPasswordCorrect = False   
             return render_template('login.html')
             
@@ -41,6 +41,7 @@ def login():
 def register():
     if request.method == 'POST':
         new_user = request.form['user']
+        new_password = request.form['password']
         existing_users = User.query.all()
         found = False 
         for user in existing_users:
@@ -50,7 +51,7 @@ def register():
                 found = True
                 print("Found user " + user.username)
         if not found:
-            create_user = User(new_user)
+            create_user = User(username = new_user, password = new_password)
             db.session.add(create_user)
             db.session.commit()
             print("User already registered")
